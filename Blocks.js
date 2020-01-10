@@ -101,12 +101,30 @@ let BLOCKS_A = [
   BLOCKS_Z
 ];
 
-function disp() {
+const MAP_H = 20;
+const MAP_W = 10;
+const BLK_H =  4;
+const BLK_W =  4;
+
+function disp(n, t) {
     let canvas = document.getElementById('canvas');
     let context = canvas.getContext('2d');
 
-    context.fillStyle = 'gray';
-    context.fillRect(0, 0, 100, 100);
+    let blk = BLOCKS_A[n][t];
+
+    for (let i = 0; i < MAP_H; i++) {
+        for (let j = 0; j < MAP_W; j++) {
+        }
+    }
+
+    context.fillStyle = 'cyan';
+    for (let i = 0; i < BLK_H; i++) {
+        for (let j = 0; j < BLK_W; j++) {
+            if (blk[i][j] > 0) {
+                context.fillRect(j * 10, i * 10, 10, 10);
+            }
+        }
+    }
 }
 
-disp();
+disp(0, 0);
