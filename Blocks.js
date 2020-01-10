@@ -100,3 +100,13 @@ let BLOCKS_A = [
   BLOCKS_S,
   BLOCKS_Z
 ];
+
+function disp() {
+    let canvas = document.getElementById('canvas');
+    let context = canvas.getContext('2d');
+
+    context.fillStyle = 'gray';
+    context.fillRect(0, 0, 100, 100);
+}
+
+disp();
