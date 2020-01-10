@@ -93,3 +93,10 @@ let BLOCKS_Z = [
         [0, 0, 0, 0]
     ]
 ];
+
+let BLOCKS_A = [
+  BLOCKS_I,
+  BLOCKS_O,
+  BLOCKS_S,
+  BLOCKS_Z
+];
