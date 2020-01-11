@@ -1,4 +1,4 @@
-let BLOCKS_I = [
+let BLK_I = [
     [
         [0, 0, 0, 0],
         [1, 1, 1, 1],
@@ -22,7 +22,7 @@ let BLOCKS_I = [
     ]
 ];
 
-let BLOCKS_O = [
+let BLK_O = [
     [
         [0, 0, 0, 0],
         [0, 1, 1, 0],
@@ -46,7 +46,7 @@ let BLOCKS_O = [
     ]
 ];
 
-let BLOCKS_S = [
+let BLK_S = [
     [
         [0, 1, 1, 0],
         [1, 1, 0, 0],
@@ -70,7 +70,7 @@ let BLOCKS_S = [
     ]
 ];
 
-let BLOCKS_Z = [
+let BLK_Z = [
     [
         [1, 1, 0, 0],
         [0, 1, 1, 0],
@@ -94,11 +94,11 @@ let BLOCKS_Z = [
     ]
 ];
 
-let BLOCKS_A = [
-  BLOCKS_I,
-  BLOCKS_O,
-  BLOCKS_S,
-  BLOCKS_Z
+let BLK = [
+  BLK_I,
+  BLK_O,
+  BLK_S,
+  BLK_Z
 ];
 
 const MAP_H = 20;
@@ -110,7 +110,7 @@ function disp(n, t) {
     let canvas = document.getElementById('canvas');
     let context = canvas.getContext('2d');
 
-    let blk = BLOCKS_A[n][t];
+    let blk = BLK[n][t];
 
     for (let i = 0; i < MAP_H; i++) {
         for (let j = 0; j < MAP_W; j++) {
