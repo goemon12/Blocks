@@ -176,11 +176,20 @@ function test(x, y, n, t) {
     for (let i = 0; i < BLK_H; i++) {
         for (let j = 0; j < BLK_W; j++) {
             if (blk[i][j] < 9) {
-                if ((y + i < MAP_H)
-                && (x + j < MAP_W)
-                && (MAP[y + i][x + j] < 9)) {
+                console.log("y="+i+"x="+j);
+                if (y + i < 0) {
+                    test = false;
                 }
-                else {
+                else if (y + i >= MAP_H) {
+                    test = false;
+                }
+                else if (x + j < 0) {
+                    test = false;
+                }
+                else if (x + j >= MAP_W) {
+                    test = false;
+                }
+                else if (MAP[y + i][x + j] < 9) {
                     test = false;
                 }
             }
@@ -189,4 +198,24 @@ function test(x, y, n, t) {
     return test;
 }
 
-disp(0, 0, 0, 0);
+window.onkeydown = function(e) {
+    console.log("A");
+    switch (e.keyCode) {
+        case 37:
+            if (test(BLK_X - 1, BLK_Y, BLK_N, BLK_T)) {
+                BLK_X -= 1;
+            }
+            break;
+        case 39:
+            if (test(BLK_X + 1, BLK_Y, BLK_N, BLK_T)) {
+                BLK_X += 1;
+                console.log("R");
+            }
+            break;
+        default:
+            console.log(e.keyCode);
+    }
+    disp(BLK_X, BLK_Y, BLK_N, BLK_T);
+}
+
+disp(BLK_X, BLK_Y, BLK_N, BLK_T);
