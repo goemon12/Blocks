@@ -107,7 +107,6 @@ let MAP = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
-
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
@@ -119,7 +118,6 @@ let MAP = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
-
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
@@ -127,35 +125,68 @@ let MAP = [
     [9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
 ];
 
+const COLOR = [
+  "cyan",//0
+  "gray",//1
+  "gray",//2
+  "gray",//3
+  "gray",//4
+  "gray",//5
+  "gray",//6
+  "gray",//7
+  "gray",//8
+  "gray"//9
+];
+
 const MAP_H = 20;
 const MAP_W = 10;
 const BLK_H =  4;
 const BLK_W =  4;
 
-function disp(n, t) {
-    let canvas = document.getElementById('canvas');
-    let context = canvas.getContext('2d');
+let BLK_X = 0;
+let BLK_Y = 0;
+let BLK_N = 0;
+let BLK_T = 0;
+
+function disp(x, y, n, t) {
+    let cvs = document.getElementById("canvas");
+    let ctx = canvas.getContext("2d");
 
     for (let i = 0; i < MAP_H; i++) {
         for (let j = 0; j < MAP_W; j++) {
-            if (MAP[i][j] > 0) {
-                context.fillStyle = 'black';
-            }
-            else {
-                context.fillStyle = 'gray';
-            }
-            context.fillRect(j * 10, i * 10, 10, 10);
+            ctx.fillStyle = COLOR[MAP[i][j]];
+            ctx.fillRect(j * 10, i * 10, 10, 10);
         }
     }
 
-    context.fillStyle = 'cyan';
+    let blk = BLK[n][t];
     for (let i = 0; i < BLK_H; i++) {
         for (let j = 0; j < BLK_W; j++) {
-            if (blk[i][j] > 0) {
-                context.fillRect(j * 10, i * 10, 10, 10);
+            if (blk[i][j] < 9) {
+                ctx.fillStyle = COLOR[blk[i][j]];
+                ctx.fillRect((x + j) * 10, (y + i) * 10, 10, 10);
             }
         }
     }
 }
 
-disp(0, 0);
+function test(x, y, n, t) {
+    let test = true;
+    let blk = BLK[n][t];
+    for (let i = 0; i < BLK_H; i++) {
+        for (let j = 0; j < BLK_W; j++) {
+            if (blk[i][j] < 9) {
+                if ((y + i < MAP_H)
+                && (x + j < MAP_W)
+                && (MAP[y + i][x + j] < 9)) {
+                }
+                else {
+                    test = false;
+                }
+            }
+        }
+    }
+    return test;
+}
+
+disp(0, 0, 0, 0);
