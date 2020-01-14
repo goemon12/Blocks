@@ -210,8 +210,6 @@ window.onkeydown = function(e) {
                 BLK_X += 1;
             }
             break;
-        case 38:
-            break;
         case 40:
             if (test(BLK_X, BLK_Y + 1, BLK_N, BLK_T)) {
                 BLK_Y += 1;
