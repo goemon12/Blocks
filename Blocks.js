@@ -176,7 +176,6 @@ function test(x, y, n, t) {
     for (let i = 0; i < BLK_H; i++) {
         for (let j = 0; j < BLK_W; j++) {
             if (blk[i][j] < 9) {
-                console.log("y="+i+"x="+j);
                 if (y + i < 0) {
                     test = false;
                 }
@@ -209,7 +208,13 @@ window.onkeydown = function(e) {
         case 39:
             if (test(BLK_X + 1, BLK_Y, BLK_N, BLK_T)) {
                 BLK_X += 1;
-                console.log("R");
+            }
+            break;
+        case 38:
+            break;
+        case 40:
+            if (test(BLK_X, BLK_Y + 1, BLK_N, BLK_T)) {
+                BLK_Y += 1;
             }
             break;
         default:
