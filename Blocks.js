@@ -215,6 +215,16 @@ window.onkeydown = function(e) {
                 BLK_Y += 1;
             }
             break;
+        case 88:
+            if (test(BLK_X, BLK_Y, BLK_N, (BLK_T + 1) % 4)) {
+                BLK_T = (BLK_T + 1) % 4;
+            }
+            break;
+        case 90:
+            if (test(BLK_X, BLK_Y, BLK_N, (BLK_T + 3) % 4)) {
+                BLK_T = (BLK_T + 3) % 4;
+            }
+            break;
         default:
             console.log(e.keyCode);
     }
